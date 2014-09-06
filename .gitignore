@@ -8,3 +8,6 @@ idea/
 .classpath
 .project
 .idea
+*.iml
+*.ipr
+*.iws
