@@ -11,7 +11,7 @@ To implement, put the jar on your classpath. From the base project directory:
 
 To configure:
 
-[Configure](http://logback.qos.ch/manual/configuration.html) a logback appender like [src/main/resources/logback-test.xml](#).
+[Configure](http://logback.qos.ch/manual/configuration.html) a logback appender like [src/main/resources/logback-test.xml](https://github.com/jasonnerothin/logback-graphite/blob/master/src/test/resources/logback-test.xml).
 
 To run:
 
