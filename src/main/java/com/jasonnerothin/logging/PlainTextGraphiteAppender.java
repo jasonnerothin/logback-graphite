@@ -14,9 +14,9 @@ import java.net.Socket;
  */
 public class PlainTextGraphiteAppender extends AppenderBase {
 
-    static final String GRAPHITE_HOST_PROPERTY_NAME = "graphite.host";
+    public static final String GRAPHITE_HOST_PROPERTY_NAME = "graphite.host";
     private static final String GRAPHITE_HOST_PROPERTY_DESCRIPTION = "graphite host";
-    static final String GRAPHITE_PORT_PROPERTY_NAME = "graphite.port";
+    public static final String GRAPHITE_PORT_PROPERTY_NAME = "graphite.port";
     private static final String MISSING_PROPERTY_ERROR
             = "%s was not provided to the runtime. Please ensure that %s is provided (e.g. -D%s=aValue).";
 
