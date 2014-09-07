@@ -2,13 +2,13 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%msg%n</pattern>
+            <pattern>%msg %date{s}%n</pattern>
         </encoder>
     </appender>
 
     <appender name="GRAPHITE" class="com.jasonnerothin.logging.PlainTextGraphiteAppender">
         <encoder>
-            <pattern>%msg%n</pattern>
+            <pattern>%msg %date{s}%n</pattern>
         </encoder>
     </appender>
 

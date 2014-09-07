@@ -34,21 +34,14 @@ public class PlainTextGraphiteAppenderI10nTest {
         TestMetric elida = new TestMetric();
         elida.name = "nerothin.elida.age";
         elida.data = 8.999999999;
-        elida.timestamp = new Date();
-
-        Thread.sleep(1000);
 
         TestMetric ruby = new TestMetric();
         ruby.name = "nerothin.ruby.age";
         ruby.data = 6l;
-        ruby.timestamp = new Date();
-
-        Thread.sleep(1000);
 
         TestMetric peter = new TestMetric();
         peter.name = "nerothin.peter.age";
         peter.data = 3.3f;
-        peter.timestamp = new Date();
 
         logger.info(elida.toString());
         logger.info(ruby.toString());
@@ -74,15 +67,12 @@ class TestMetric {
 
     private static final String DELIMITER = " ";
 
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("%s");
-
     public String name;
     public Number data;
-    public Date timestamp;
 
     @Override
     public String toString() {
-        return name + DELIMITER + data + DELIMITER + dateFormat.format(timestamp) + DELIMITER;
+        return name + DELIMITER + data;
     }
 
 }
