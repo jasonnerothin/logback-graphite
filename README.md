@@ -1,7 +1,7 @@
 logback-graphite
 ================
 
-A logback implementation that writes metrics to a Graphite server using plain text protocol using a custom logback Appender.
+A custom logback Appender that writes metrics to a Graphite server using Graphite's "plain text protocol".
 
 To implement, put the jar on your classpath. From the base project directory:
 
