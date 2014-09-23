@@ -1,14 +1,14 @@
-<configuration>
+<configuration debug="false">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%msg %date{s}%n</pattern>
+            <pattern>%msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="GRAPHITE" class="com.jasonnerothin.logging.PlainTextGraphiteAppender">
         <encoder>
-            <pattern>%msg %date{s}%n</pattern>
+            <pattern>%msg%n</pattern>
         </encoder>
     </appender>
 
