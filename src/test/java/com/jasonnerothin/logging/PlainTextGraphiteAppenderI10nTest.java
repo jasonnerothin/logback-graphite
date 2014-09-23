@@ -79,21 +79,21 @@ public class PlainTextGraphiteAppenderI10nTest {
 
     private TestMetric peter() {
         TestMetric peter = new TestMetric();
-        peter.name = "nerothin.age.peter";
+        peter.name = "age.nerothin.peter";
         peter.data = 3.3d;
         return peter;
     }
 
     private TestMetric ruby() {
         TestMetric ruby = new TestMetric();
-        ruby.name = "nerothin.age.ruby";
+        ruby.name = "age.nerothin.ruby";
         ruby.data = 6l;
         return ruby;
     }
 
     private TestMetric elida() {
         TestMetric elida = new TestMetric();
-        elida.name = "nerothin.age.elida";
+        elida.name = "age.nerothin.elida";
         elida.data = 8.99;
         return elida;
     }
