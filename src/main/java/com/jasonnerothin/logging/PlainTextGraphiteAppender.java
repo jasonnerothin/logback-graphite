@@ -1,5 +1,6 @@
 package com.jasonnerothin.logging;
 
+import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.net.Socket;
  * <p/>
  * {@see http://graphite.readthedocs.org/en/latest/feeding-carbon.html}
  */
-public class PlainTextGraphiteAppender extends AppenderBase {
+public class PlainTextGraphiteAppender extends AppenderBase<ILoggingEvent> {
 
     public static final String GRAPHITE_HOST_PROPERTY_NAME = "graphite.host";
     private static final String GRAPHITE_HOST_PROPERTY_DESCRIPTION = "graphite host";
@@ -49,17 +50,18 @@ public class PlainTextGraphiteAppender extends AppenderBase {
      * {@inheritDoc}
      */
     @Override
-    protected void append(Object eventObject) {
+    protected void append(ILoggingEvent eventObject) {
         OutputStream outputStream = null;
         PrintWriter writer = null;
         Socket graphiteSocket = getSocket();
         try {
             outputStream = graphiteSocket.getOutputStream();
-            writer = new PrintWriter(outputStream);
-            writer.println(eventObject);
+            writer = new PrintWriter(outputStream, true);
+            writer.println(eventObject.getMessage() + " " + unixTime());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            if( writer != null ) writer.flush();
             try {
                 if (outputStream != null) outputStream.close();
             } catch (IOException e) {
@@ -67,6 +69,10 @@ public class PlainTextGraphiteAppender extends AppenderBase {
             }
             if (writer != null) writer.close();
         }
+    }
+
+    private String unixTime() {
+        return String.format("%d", System.currentTimeMillis() / 1000 );
     }
 
     private Socket getSocket() {

@@ -16,6 +16,8 @@ import java.util.TimeZone;
  * Date: 9/6/14
  * Time: 9:39 AM
  * Provides an integration test for the appender, writing to a real graphite service.
+ * A working graphite instance can be configured from here: https://github.com/jasonnerothin/trusty-graphite.
+ * Tailing the logs in ~vagrant/carbon_logs should show data coming in...
  */
 public class PlainTextGraphiteAppenderI10nTest {
 
@@ -40,7 +42,13 @@ public class PlainTextGraphiteAppenderI10nTest {
 
     @Test
     public void testWriteOnce() throws InterruptedException {
-        logKids();
+
+        TestMetric metric = new TestMetric();
+        metric.data = 1;
+        metric.name = "a";
+
+        logger.info(metric.toString());
+
     }
 
     private void logKids() {
@@ -109,11 +117,7 @@ class TestMetric {
 
     @Override
     public String toString() {
-        return name + DELIMITER + data + DELIMITER + unixTime();
-    }
-
-    private long unixTime() {
-        return System.currentTimeMillis() / 1000;
+        return name + DELIMITER + data;
     }
 
 }
